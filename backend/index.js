@@ -4,6 +4,7 @@ const cors = require('cors');
 const app = express();
 const port = 4900;
 const connectToMongoDB = require('./db');
+// const userRoutes = require('./Routes/UserData');
 
 // Enable CORS for all routes
 app.use(cors({
@@ -32,7 +33,8 @@ connectToMongoDB();
 app.use(express.json());
 app.use('/api', require('./Routes/CreateUser'));
 app.use('/api', require('./Routes/DisplayData'));
-app.use('/api', require('./Routes/OrderData'))
+app.use('/api', require('./Routes/OrderData'));
+// app.use('/api', require('./Routes/UserData')); 
 
 app.get('/', (req, res) => {
   res.send('Hello World!');

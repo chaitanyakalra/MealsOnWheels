@@ -1,47 +1,3 @@
-
-// import React, { useEffect, useState, useRef } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { useCart } from './ContextReducer';
-// import { useSyncExternalStore } from 'react-redux';
-
-
-// export default function Card(props) {
-//     let dispatch = useDispatch();
-
-   
-//     let data = useCart();
-//     const priceRef = useRef();
-//     let options = props.options;
-//     let priceOptions = Object.keys(options);
-//     const [qty, setQty] = useState(1);
-//     const [size, setSize] = useState("");
-
-//     // new
-//     let navigate = useNavigate();
-//     let foodItem = props.item;
-
-//     const handleAddToCart = async () => {
-//         await dispatch({
-//             type: "ADD",
-//             id: props.foodItem._id,
-//             name: props.foodItem.name,
-//             price: finalPrice,
-//             qty: qty,
-//             size: size
-//         });
-//         console.log(data);
-//     }
-//     let finalPrice = qty * (options[size]);
-//     useEffect(() => {
-//         setSize(priceRef.current.value)
-//     },[])
-
-
-
-
-
-
-
 // import React, { useState, useRef, useEffect } from 'react'
 // import { useNavigate } from 'react-router-dom'
 // import { useDispatchCart, useCart } from './ContextReducer'
@@ -144,7 +100,8 @@ export default function Card(props) {
                   name: props.foodItem.name,
                   price: finalPrice,
                   qty: qty,
-                  size: size
+                  size: size,
+                  img: props.foodItem.img 
               });
               console.log(data);
               

@@ -126,22 +126,22 @@ export default function Cart() {
         <table className='table table-hover'>
           <thead className='text-success fs-4'>
             <tr>
-              <th scope='col'>#</th>
-              <th scope='col'>Name</th>
-              <th scope='col'>Quantity</th>
-              <th scope='col'>Option</th>
-              <th scope='col'>Amount</th>
-              <th scope='col'></th>
+              <th scope='col' style={{ color: 'white' }}>#</th>
+              <th scope='col' style={{ color: 'white' }}>Name</th>
+              <th scope='col' style={{ color: 'white' }}>Quantity</th>
+              <th scope='col' style={{ color: 'white' }}>Option</th>
+              <th scope='col' style={{ color: 'white' }}>Amount</th>
+              <th scope='col' style={{ color: 'white' }}></th>
             </tr>
           </thead>
           <tbody>
             {data.map((food, index) => (
-              <tr key={index}>
-                <th scope='row'>{index + 1}</th>
-                <td>{food.name}</td>
-                <td>{food.qty}</td>
-                <td>{food.size}</td>
-                <td>{food.price}</td>
+              <tr key={index} className='table-content' style={{ color: 'gray' }}>
+                <th scope='row'style={{ color: 'gray' }}>{index + 1}</th>
+                <td style={{ color: 'gray' }}>{food.name}</td>
+                <td style={{ color: 'gray' }}>{food.qty}</td>
+                <td style={{ color: 'gray' }}>{food.size}</td>
+                <td style={{ color: 'gray' }}>{food.price}</td>
                 <td>
                   <button
                     type="button"

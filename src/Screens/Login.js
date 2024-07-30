@@ -1,21 +1,27 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Navbar from '../Components/Navbar';
+import Footer from '../Components/Footer';
 
 
 export default function Login() {
   const [credentials, setCredentials] = useState({
     email: '',
     password: '',
+    
   });
 
+
+  
   let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log('Email:', credentials.email);
-    console.log('Password:', credentials.password);
-
+    // console.log('Email:', credentials.email);
+    // console.log('Password:', credentials.password);
+    
+    
     try {
 
       const response = await fetch('http://localhost:4900/api/loginUser', {
@@ -28,13 +34,14 @@ export default function Login() {
         body: JSON.stringify({
           email: credentials.email,
           password: credentials.password,
+          
         }),
       });
 
       console.log("Fetch working");
 
       const json = await response.json();
-      console.log(json);
+      console.log("json", json);
 
       if (!json.success) {
         alert('Enter Valid Credentials');
@@ -42,7 +49,14 @@ export default function Login() {
 
         localStorage.setItem("userEmail", credentials.email);
         localStorage.setItem("authToken", json.authToken);
+        localStorage.setItem("username", json.name);
         console.log(localStorage.getItem("authToken"));
+        console.log(localStorage.getItem("username"));
+
+
+        // localStorage.setItem("username", credentials.name);
+        // console.log("Stored username:", localStorage.getItem("username"));
+
         navigate('/');
       }
 
@@ -57,7 +71,10 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <div style={{ backgroundImage: 'url("https://images.pexels.com/photos/326278/pexels-photo-326278.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")', height: '100vh', backgroundSize: 'cover' }}>
+      <div>
+        <Navbar />
+      </div>
       <div className="container">
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
@@ -100,6 +117,12 @@ export default function Login() {
             I am a new User
           </Link>
         </form>
+      </div>
+
+
+      <div>
+
+        <Footer />
       </div>
     </div>
   );
